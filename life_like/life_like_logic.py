@@ -39,7 +39,19 @@ def generar_matriz_vacia(filas, columnas):
 
 def obtener_vecinos(M, f, c):
    """
-   
+   Funcion que segun la posicion [f][c] de la celula que se este revisando,
+   toma el estado sus vecinos es decir las 8 celulas alrededor y estos
+   estados se agregan a una lista llamada vecinos la cual es finalmente 
+   retornada.
+   Entradas:
+        -M, es la matriz en la que se encuentran las celulas, los unicos posibles
+            valores son 0s y 1s
+        -f, se refiere a la fila en la que se encuentra la celula a evaluar, es un 
+            numero entero positivo
+        -c, se refiere a la columna en la que se encuentra la celula a evaluar, es un
+            numero entero positivo
+    Salidas:
+        -lista de con los estados de los vecinos de la celula que se esta revisando
    """
    filas = len(M)
    columnas = len(M[0])
@@ -51,6 +63,18 @@ def obtener_vecinos(M, f, c):
    return vecinos
 
 def parametros(P):
+    """
+    Funcion que toma un parametro (sea B: cuando nacen, o S: cuando sobrevive) y convierte los 
+    dados en este parametro en una lista de numeros.
+    Entradas:
+        -P, parametro a convertir a lista, es un numero entero entre 0 y 8
+    Salidas:
+        -los mismos numeros que antes estaban en el parametro pero convertidos a una lista
+    Restricciones:
+        -P debe ser un numero entero
+        -P debe ser mayor o igual a 0
+        -P debe ser menor o igual a 8
+    """
     P = str(P)
     P = list(P)
     for i in range(P):
@@ -66,15 +90,19 @@ def transicion_celula(estado, vecinos, B, S):
     Entradas:
         -estado, valor de la celula a transicionar puede ser un 0 o 1
         -vecinos, el valor (estado) de los vecinos puede ser un 0 o 1
-        -B, parametro que indica en que situaciones puede nacer una nueva celular es decir pasar de 0 a 1
-        -S, parametro que indica en que situaciones se mantienen vivas las celulas, es decir, mantenerse en 1
+        -B, parametro que indica en que situaciones puede nacer una nueva celular es decir pasar de 0 a 1, 
+                es una lista con las cantidades de vecinos vivos que deben haber en la celula muerta a evaluar
+                para que nazca una nueva celula
+        -S, parametro que indica en que situaciones se mantienen vivas las celulas, es decir, mantenerse en 1,
+                es una lista con las cantidades de vecinos vivos que deben haber en la celula viva a evaluar para 
+                que esta se mantenga viva
     Salidas:
         -estado de la celula a transicionar segun los parametros indicados (0 o 1)
     Restricciones:
         -estado debe ser un 0 o 1
         -vecinos deben ser 0 o 1
-        -B
-        -S
+        -B debe ser una lista con numeros enteros positivos
+        -S debe ser una lista con numero enteros positivos
     """
     vivos = 0
     for vecino in vecinos:
@@ -87,16 +115,26 @@ def transicion_celula(estado, vecinos, B, S):
     else:
         return estado
 
-def transicion(M):
+def transicion(M, B, S):
     """
-    
+    Funcion que revisa celula por celula, toma sus vecinos, cambia sus estados
+    y crea una nueva matriz con los estados de cada una de las celulas.
+    Entradas:
+        -M, matriz con 0s o 1s, es la matriz donde se encuentran las celulas antes del 
+        cambio.
+        -B, lista numerica con las cantidades de vecinos vivos necesarios para que nazca una nueva
+            celula.
+        -S, lista numerica con las cantidades de vecinos vivos necesarios para que se mantenga viva
+            una celula.
+    Salidas:
+        -Matriz con los nuevos estados de todas las celulas
     """
     new = []
     for f in range(len(M)):
        fila = []
        for c in range(len(M[0])):
            vecinos = obtener_vecinos(M, f, c)
-           celula = transicion_celula(M[f][c], vecinos)
+           celula = transicion_celula(M[f][c], vecinos, B, S)
            fila.append(celula)
        new.append(fila)
     return new
