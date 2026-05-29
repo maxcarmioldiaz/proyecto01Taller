@@ -2,6 +2,7 @@ def girar_hormiga(direccion):
     """
     
     """
+    
 
 def avanzar_hormiga():
     """
