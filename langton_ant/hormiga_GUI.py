@@ -29,17 +29,17 @@ def main():
     eleccion_inicio = gui.buttonbox(
         msg = "Tiene un automata guardado que desee utilizar?",
         title = "Inicio",
-        choices = ("Si, quiero usar mi automata guardado", "No, quiero crear un nuevo automata" \
+        choices = ("Si, quiero usar mi automata guardado", "No, quiero crear un nuevo automata")
         )
 
-        if eleccion_inicio == "Si, quiero usar mi automata guardado":
-            loop = True
-            while loop:
-                ruta = gui.fileopenbox(
-                    msg = "Seleccione el archivo de su automata guardado",
-                    title = "Cargar Hormiga de Langton",
+    if eleccion_inicio == "Si, quiero usar mi automata guardado":
+        loop = True
+        while loop:
+            ruta = gui.fileopenbox(
+                msg = "Seleccione el archivo de su automata guardado",
+                title = "Cargar Hormiga de Langton",
                 )
-                if ruta is None:
+            if ruta is None:
                 eleccion = gui.buttonbox(
                     msg=    "No selecciono ningun archivo",
                     title=  "Sin archivo seleccionado",
@@ -53,7 +53,7 @@ def main():
                         datos   = pickle.load(archivo)
                         archivo.close()
     
-                        matriz = datos["matriz"]
+                        M = datos["matriz"]
                         filas = datos["filas"]
                         columnas = datos["columnas"]
                         tam = datos["tamaño"]
@@ -162,14 +162,16 @@ def main():
                         ok_button= "Ingresar otra vez"
                     )
     
-                elif not respuesta_columnas.isdigit():
+                if not respuesta_columnas.isdigit():
                     gui.msgbox(
                         msg=      "Debe ingresar un numero entero para las columnas.",
                         title=    "Error",
                         ok_button= "Ingresar otra vez"
                     )
     
-                elif int(respuesta_columnas) < 1 or int(respuesta_columnas) > 500:
+                columnas = int(respuesta_columnas)
+
+                if columnas < 1 or int(columnas) > 500:
                     gui.msgbox(
                         msg=      "El valor de las columnas debe estar entre 1 y 500.",
                         title=    "Error",
@@ -177,5 +179,5 @@ def main():
                     )
     
                 else:
-                    columnas = int(respuesta_columnas)
+                    
                     loop     = False
