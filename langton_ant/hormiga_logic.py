@@ -92,7 +92,7 @@ def siguiente(matriz, fila_hormiga, columna_hormiga, direccion_hormiga, reglas):
         -direccion_hormiga debe ser 'arriba', 'abajo', 'izquierda' o 'derecha'
         -reglas debe ser un string no vacio con solo caracteres 'L' y 'R'
     """
-   cantidad_colores = len(reglas)
+    cantidad_colores = len(reglas)
     color_celda_actual = matriz[fila_hormiga][columna_hormiga]
  
     #  girar segun la regla del color actual
@@ -110,6 +110,8 @@ def siguiente(matriz, fila_hormiga, columna_hormiga, direccion_hormiga, reglas):
         direccion_hormiga,
         total_filas, total_columnas
     )
+
+    return (matriz, fila_hormiga, columna_hormiga, direccion_hormiga)
 
 def generar_colores(cantidad_colores):
     """
