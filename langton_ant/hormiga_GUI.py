@@ -29,8 +29,8 @@ def main():
     eleccion_inicio = gui.buttonbox(
         msg = "Tiene un automata guardado que desee utilizar?",
         title = "Inicio",
-        choices = ("Si, quiero usar mi automata guardado", "No, quiero crear un nuevo automata" \
-        )
+        choices = ("Si, quiero usar mi automata guardado", "No, quiero crear un nuevo automata")
+        
     )
 
     if eleccion_inicio == "Si, quiero usar mi automata guardado":
