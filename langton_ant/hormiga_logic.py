@@ -1,3 +1,6 @@
+from random import randint
+from colorsys import hsv_to_rgb
+
 def girar_hormiga(direccion_actual, giro):
     """
     Funcion que actualiza la direccion de la hormiga segun el giro indicado.
@@ -76,7 +79,7 @@ def siguiente(matriz, fila_hormiga, columna_hormiga, direccion_hormiga, reglas):
         4. Avanza la hormiga una celda en la nueva direccion
     Entradas:
         -matriz, matriz bidimensional de enteros donde cada valor es un
-            indice de color (entre 0 y cantidad_de_colores - 1)
+            indice de color (entre 0 y cantidad_colores - 1)
         -fila_hormiga, entero con la fila actual de la hormiga
         -columna_hormiga, entero con la columna actual de la hormiga
         -direccion_hormiga, string con la direccion actual de la hormiga
@@ -111,6 +114,8 @@ def siguiente(matriz, fila_hormiga, columna_hormiga, direccion_hormiga, reglas):
         total_filas, total_columnas
     )
 
+    return (matriz, fila_hormiga, columna_hormiga, direccion_hormiga)
+
 def generar_colores(cantidad_colores):
     """
     Funcion que genera una lista de colores distintos en formato RGB
@@ -124,17 +129,5 @@ def generar_colores(cantidad_colores):
         -cantidad_colores debe ser un entero positivo mayor o igual a 1
         -cantidad_colores no debe superar la cantidad de colores en la lista predefinida
     """
-    colores_predefinidos = [
-        (255, 0, 0),      # rojo
-        (0, 255, 0),      # verde
-        (0, 0, 255),      # azul
-        (255, 255, 0),    # amarillo
-        (255, 0, 255),    # magenta
-        (0, 255, 255),    # cyan
-        (128, 0, 128),    # morado
-        (255, 165, 0),    # naranja
-        (128, 128, 128),  # gris
-        (0, 128, 128)     # teal
-    ]
-    lista_colores = colores_predefinidos[:cantidad_colores]
+    lista_colores = [ (randint(0,255) , randint(0,255) , randint(0,255)) for x in range(cantidad_colores)]
     return lista_colores
