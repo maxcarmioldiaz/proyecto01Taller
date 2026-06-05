@@ -152,7 +152,7 @@ def main():
             filas = gui.enterbox(
             msg= "Cuantas filas desea que tenga la matriz para el juego?",
             title= "Dimensiones de la matriz",
-            default= "Ingrese aqui un valor entre 1 y 500"
+            default= "50"
             )
 
             if filas is None:
@@ -187,7 +187,7 @@ def main():
             columnas = gui.enterbox(
             msg= "Cuantas columnas desea que tenga la matriz para el juego?",
             title= "Dimensiones de la matriz",
-            default= "Ingrese aqui un valor entre 1 y 500"
+            default= "50"
             )
 
             if columnas is None:
@@ -221,7 +221,7 @@ def main():
             tam = gui.enterbox(
             msg= "De que tamaño desea que sean las celulas?",
             title= "Tamaño de las celulas",
-            default= "Ingrese aqui un valor entre 1 y 10"
+            default= "5"
             )
 
             if tam is None:
@@ -417,10 +417,26 @@ def main():
                                         )
 
 
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                buttons = pygame.mouse.get_pressed()
-                x, y = pygame.mouse.get_pos()
-                if buttons[0]:
-                    f = y // tam
-                    c = x // tam
-         
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    buttons = pygame.mouse.get_pressed()
+                    x, y = pygame.mouse.get_pos()
+                    if buttons[0]:
+                        f = y // tam
+                        c = x // tam
+                        M[f][c] = (M[f][c] + 1) % 2
+ 
+        window.fill((0, 0, 0))
+        for f in range(filas):
+            for c in range(columnas):
+                if M[f][c] == 1:
+                    x = c * tam
+                    y = f * tam
+                    pygame.draw.rect(window, (0, 255, 128), (x, y, tam, tam))
+        if not pausa:
+            M = log.transicion(M, B, S)
+        pygame.display.update()
+        clock.tick(10)
+    pygame.quit()
+
+if __name__ == "__main__":
+    main()
