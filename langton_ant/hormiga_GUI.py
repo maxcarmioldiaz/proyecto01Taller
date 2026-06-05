@@ -258,6 +258,7 @@ def main():
 
                 if evento.type == pygame.KEYDOWN:
                     teclas = pygame.key.get_pressed()
+
                     if teclas[pygame.K_SPACE]:
                         pausa = not pausa
 

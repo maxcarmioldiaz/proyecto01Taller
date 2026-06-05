@@ -2,7 +2,6 @@ import pickle
 import easygui as gui
 import pygame
 import life_like_logic as log
-import random
 
 tam = 10
 filas = 50
@@ -271,11 +270,11 @@ def main():
 
         #Controles del juego
         gui.msgbox(
-            "P: Pausa \n" \
+            "Barra Espaciadora: Pausa \n" \
             "R: Reinicia la matriz con valores aleatorios \n" \
             "B: Reinicia la matriz totalmente vacia \n" \
             "G: Guardar el automata \n" \
-            "C: Cargar un automata\n" \
+            "C: Cargar un automata \n" \
             "Recomendacion: En caso de querer cargar o guardar un automata pause el juego para asi " \
             "poder ver su estado antes de guardarlo o en su contraparte su estado antes de cargarlo." \
             " Tambien en caso de utilizar una matriz vacia recomendamos pause el juego con la " \
@@ -307,7 +306,7 @@ def main():
             if event.type == pygame.KEYDOWN:
                 keys = pygame.key.get_pressed()
 
-                if keys[pygame.K_p]:
+                if keys[pygame.K_SPACE]:
                     pausa = not pausa
 
                 #Reiniciar con valores neutros con la tecla b
@@ -424,20 +423,4 @@ def main():
                 if buttons[0]:
                     f = y // tam
                     c = x // tam
-                    M[f][c] = (M[f][c] + 1) % 2
- 
-        window.fill((0, 0, 0))
-        for f in range(filas):
-            for c in range(columnas):
-                if M[f][c] == 1:
-                    x = c * tam
-                    y = f * tam
-                    pygame.draw.rect(window, (0, 255, 128), (x, y, tam, tam))
-        if not pausa:
-            M = log.transicion(M, B, S)
-        pygame.display.update()
-        clock.tick(10)
-    pygame.quit()
-
-if __name__ == "__main__":
-    main()
+         

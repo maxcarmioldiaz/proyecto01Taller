@@ -62,26 +62,6 @@ def obtener_vecinos(M, f, c):
                vecinos.append(M[fv % filas][cv % columnas])
    return vecinos
 
-def parametros(P):
-    """
-    Funcion que toma un parametro (sea B: cuando nacen, o S: cuando sobrevive) y convierte los 
-    dados en este parametro en una lista de numeros.
-    Entradas:
-        -P, parametro a convertir a lista, es un numero entero entre 0 y 8
-    Salidas:
-        -los mismos numeros que antes estaban en el parametro pero convertidos a una lista
-    Restricciones:
-        -P debe ser un numero entero
-        -P debe ser mayor o igual a 0
-        -P debe ser menor o igual a 8
-    """
-    P = str(P)
-    P = list(P)
-    for i in range(P):
-         P[i] = int(P[i])
-    return P
-
-
 def transicion_celula(estado, vecinos, B, S):
     """
     Funcion que toma el estado de una celula y la de todos 
