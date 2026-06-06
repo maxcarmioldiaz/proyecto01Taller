@@ -219,7 +219,8 @@ def main():
         while loop:
 
             tam = gui.enterbox(
-            msg= "De que tamaño desea que sean las celulas?",
+            msg= "De que tamaño desea que sean las celulas?\n" \
+            "Ingrese un numero entre 1 y 10",
             title= "Tamaño de las celulas",
             default= "5"
             )
