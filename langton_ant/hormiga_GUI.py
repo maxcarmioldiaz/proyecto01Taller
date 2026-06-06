@@ -234,10 +234,11 @@ def main():
         gui.msgbox(
             msg=   "Controles del juego:\n\n"
                 "ESPACIO: Pausa y continua la simulacion\n"
-                "R:       Reinicia la matriz (con colores aleatorios)\n"
-                "B:       Reinicia la matriz con la hormiga en el centro\n"
+                "R:       Reinicia la matriz con colores aleatorios\n"
+                "B:       Reinicia la matriz con lvalores neutros\n"
                 "G:       Guardar el estado del automata\n"
-                "C:       Cargar un automata guardado\n\n"
+                "C:       Cargar un automata guardado\n"
+                "Clic:    Cambia el color de una celda al siguiente\n\n"
                 "Recomendacion: pause el juego antes de guardar o cargar.",
             title=    "Controles",
             ok_button= "Entendido!"
@@ -355,6 +356,15 @@ def main():
                                         title=    "Error al cargar",
                                         ok_button= "Elegir otro archivo"
                                     )
+                if evento.type == pygame.MOUSEBUTTONDOWN:
+                    botones = pygame.mouse.get_pressed()
+                    x_mouse, y_mouse = pygame.mouse.get_pos()
+ 
+                    if botones[0]:
+                        fila_clic    = y_mouse // tam
+                        columna_clic = x_mouse // tam
+                        color_actual = matriz[fila_clic][columna_clic]
+                        matriz[fila_clic][columna_clic] = (color_actual + 1) % len(reglas)
 
             for f in range(filas):
                 for c in range(columnas):
