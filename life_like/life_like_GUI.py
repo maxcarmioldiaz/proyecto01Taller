@@ -9,6 +9,12 @@ columnas = 50
 tick = 10
 
 def main():
+    """
+    Programa principal de hormiga de life like
+    Desarrollado por:
+        -Maximiliano Carmiol 2026006978
+        -Santiago Arrieta 2026017372
+"""
     pygame.init()
 
     clock = pygame.time.Clock()
