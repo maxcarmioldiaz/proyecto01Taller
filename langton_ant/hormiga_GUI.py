@@ -235,7 +235,7 @@ def main():
             msg=   "Controles del juego:\n\n"
                 "ESPACIO: Pausa y continua la simulacion\n"
                 "R:       Reinicia la matriz con colores aleatorios\n"
-                "B:       Reinicia la matriz con lvalores neutros\n"
+                "B:       Reinicia la matriz con valores neutros\n"
                 "G:       Guardar el estado del automata\n"
                 "C:       Cargar un automata guardado\n"
                 "Clic:    Cambia el color de una celda al siguiente\n\n"
