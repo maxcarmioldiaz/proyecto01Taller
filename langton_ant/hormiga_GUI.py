@@ -265,7 +265,7 @@ def main():
                         pausa = not pausa
 
                     if teclas[pygame.K_r]:
-                        matriz            = [[0 for c in range(columnas)] for f in range(filas)]
+                        matriz            = [[randrange(len(reglas)) for c in range(columnas)] for f in range(filas)]
                         fila_hormiga      = filas    // 2
                         columna_hormiga   = columnas // 2
                         direccion_hormiga = "arriba"
