@@ -417,13 +417,13 @@ def main():
                                         )
 
 
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    buttons = pygame.mouse.get_pressed()
-                    x, y = pygame.mouse.get_pos()
-                    if buttons[0]:
-                        f = y // tam
-                        c = x // tam
-                        M[f][c] = (M[f][c] + 1) % 2
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                buttons = pygame.mouse.get_pressed()
+                x, y = pygame.mouse.get_pos()
+                if buttons[0]:
+                    f = y // tam
+                    c = x // tam
+                    M[f][c] = (M[f][c] + 1) % 2
  
         window.fill((0, 0, 0))
         for f in range(filas):
