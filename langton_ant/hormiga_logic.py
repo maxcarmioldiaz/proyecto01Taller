@@ -1,5 +1,4 @@
 from random import randint
-from colorsys import hsv_to_rgb
 
 def girar_hormiga(direccion_actual, giro):
     """

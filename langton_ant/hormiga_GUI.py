@@ -2,6 +2,7 @@ import pickle
 import easygui as gui
 import pygame 
 import hormiga_logic as log
+from random import randrange
 
 tam = 10
 filas = 50
@@ -233,7 +234,7 @@ def main():
         gui.msgbox(
             msg=   "Controles del juego:\n\n"
                 "ESPACIO: Pausa y continua la simulacion\n"
-                "R:       Reinicia la matriz (todos los colores al primero)\n"
+                "R:       Reinicia la matriz (con colores aleatorios)\n"
                 "B:       Reinicia la matriz con la hormiga en el centro\n"
                 "G:       Guardar el estado del automata\n"
                 "C:       Cargar un automata guardado\n\n"
@@ -372,7 +373,7 @@ def main():
                 )
 
             pygame.display.update()
-            clock.tick(500)
+            clock.tick(120)
  
     pygame.quit()
  
