@@ -1,7 +1,7 @@
 <h1>Proyecto 01 Taller</h1>
 <h2>Desarrollado por:</h2>
-  <p>-Maximiliano Carmiol Díaz</p>
-  <p>-Santiago Arrieta Salazar</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Maximiliano Carmiol Díaz</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Santiago Arrieta Salazar</p>
 <h2>Programas a Desarrollar:</h2>
   <h3>-Generalizacion de la hormiga de langton:</h3>
     <h4>Descripcion:</h4>
